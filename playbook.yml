@@ -1,0 +1,31 @@
+---
+- name: Configure web server
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Deploy test website
+      copy:
+        content: |
+          <html>
+          <head>
+              <title>Jenkins Ansible GCP</title>
+          </head>
+          <body>
+              <h1>Hello from Jenkins + Ansible!</h1>
+              <p>Running on Google Cloud.</p>
+          </body>
+          </html>
+        dest: /var/www/html/index.html

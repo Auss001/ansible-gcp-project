@@ -1,0 +1,3 @@
+[web]
+[web]
+34.186.209.98 ansible_user=austinekele ansible_ssh_private_key_file=/root/.ssh/ansible_key
